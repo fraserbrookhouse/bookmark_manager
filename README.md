@@ -4,6 +4,21 @@
 
 >As a User, I should be able to see a list of bookmarks.
 
+>As a User, I should be able to add the sites address and title to bookmark manager.
+
 ## Domain Model
 
 ![Bookmark Manager Domain Model](Assets/domain_model_1.png)
+
+## Database setup
+
+1. Connect to 'psql'
+2. Create database using 'psql' command:
+```
+CREATE DATABASE bookmark_manager;
+```
+3. Connect to newly create database:
+```
+\c bookmark_manager;
+```
+4. Run scripts in 'db/migrations' directory in order.

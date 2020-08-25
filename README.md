@@ -10,9 +10,10 @@
 
 ![Bookmark Manager Domain Model](Assets/domain_model_1.png)
 
-## Database setup
+## Database Setup
 
 1. Connect to 'psql'
+
 2. Create database using 'psql' command:
 ```
 CREATE DATABASE bookmark_manager;
@@ -20,5 +21,19 @@ CREATE DATABASE bookmark_manager;
 3. Connect to newly create database:
 ```
 \c bookmark_manager;
+```
+4. Run scripts in 'db/migrations' directory in order.
+
+## Testing Database Setup
+
+1. Connect to 'psql'
+
+2. Create database using 'psql' command:
+```
+CREATE DATABASE bookmark_manager_test;
+```
+3. Connect to newly create database:
+```
+\c bookmark_manager_test;
 ```
 4. Run scripts in 'db/migrations' directory in order.

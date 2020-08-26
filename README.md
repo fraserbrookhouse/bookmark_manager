@@ -6,6 +6,8 @@
 
 >As a User, I should be able to add the sites address and title to bookmark manager.
 
+>As a user, so I can remove my bookmark from Bookmark Manager, I want to be able to delete a bookmark
+
 ## Domain Model
 
 ![Bookmark Manager Domain Model](Assets/domain_model_1.png)

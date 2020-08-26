@@ -8,10 +8,10 @@ feature 'Viewing bookmarks' do
 
   scenario 'A user can see bookmarks' do
 
-    Bookmark.create(url: "https://www.twitter.com", title: 'Twitter')
-    Bookmark.create(url: "https://www.destroyallsoftware.com", title: 'Destroy All Software')
-    Bookmark.create(url: "https://www.google.co.uk", title: 'Google')
-    Bookmark.create(url: "https://www.reddit.com", title: 'Reddit')
+    Bookmark.create(url: 'https://www.twitter.com', title: 'Twitter')
+    Bookmark.create(url: 'https://www.destroyallsoftware.com', title: 'Destroy All Software')
+    Bookmark.create(url: 'https://www.google.co.uk', title: 'Google')
+    Bookmark.create(url: 'https://www.reddit.com', title: 'Reddit')
 
     visit ('/bookmarks')
 

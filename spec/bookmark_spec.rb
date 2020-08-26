@@ -1,27 +1,37 @@
+require 'database_helpers'
+
 describe 'Bookmark' do  
   describe '#.all' do
     it 'returns a list of bookmarks' do
       connection = PG.connect(dbname: 'bookmark_manager_test')
 
-      connection.exec("INSERT INTO bookmarks (url) VALUES ('https://www.twitter.com')")
-      connection.exec("INSERT INTO bookmarks (url) VALUES ('https://www.destroyallsoftware.com')")
-      connection.exec("INSERT INTO bookmarks (url) VALUES ('https://www.google.co.uk')")
-      connection.exec("INSERT INTO bookmarks (url) VALUES ('https://www.reddit.com')")
+      # add test data
+      bookmark = Bookmark.create(url: "https://www.twitter.com", title: 'Twitter')
+      Bookmark.create(url: "https://www.destroyallsoftware.com", title: 'Destroy All Software')
+      Bookmark.create(url: "https://www.google.co.uk", title: 'Google')
+      Bookmark.create(url: "https://www.reddit.com", title: 'Reddit')
 
       bookmarks = Bookmark.all
 
-      expect(bookmarks).to include "https://www.twitter.com"
-      expect(bookmarks).to include "https://www.destroyallsoftware.com"
-      expect(bookmarks).to include "https://www.google.co.uk"
-      expect(bookmarks).to include "https://www.reddit.com"
+      expect(bookmarks.length).to eq 4
+      expect(bookmarks.first).to be_a Bookmark
+      expect(bookmarks.first.id).to eq bookmark.id
+      expect(bookmarks.first.title).to eq 'Twitter'
+      expect(bookmarks.first.url).to eq 'https://www.twitter.com'
     end
   end
 
   describe '#.create' do
     it 'creates a bookmark' do
-      Bookmark.create(url: 'http://www.testbookmark.com')
-
-      expect(Bookmark.all).to include 'http://www.testbookmark.com'
+      bookmark = Bookmark.create(url: 'http://www.testbookmark.com', title: 'Test Bookmark')
+      
+      persisted_data = persisted_data(id: bookmark.id)
+      p persisted_data
+      
+      expect(bookmark).to be_a Bookmark
+      expect(bookmark.id).to eq persisted_data['id']
+      expect(bookmark.title).to eq 'Test Bookmark'
+      expect(bookmark.url).to eq 'http://www.testbookmark.com'
     end
   end
 end

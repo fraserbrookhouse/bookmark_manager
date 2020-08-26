@@ -41,7 +41,7 @@ describe 'Bookmark' do
 
       Bookmark.delete(id: bookmark.id)
 
-      expect(bookmark.all.length).to eq 0
+      expect(Bookmark.all.length).to eq 0
     end
   end
 end

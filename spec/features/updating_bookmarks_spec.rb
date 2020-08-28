@@ -1,6 +1,6 @@
 feature 'Updating a bookmark' do
   scenario 'A user can update a bookmark' do
-    Bookmark.create(
+    bookmark = Bookmark.create(
       url: 'https://www.testbookmarkoriginal.com',
       title: 'Test Bookmark Original'
     )
@@ -11,6 +11,7 @@ feature 'Updating a bookmark' do
     )
 
     first('.bookmark').click_button 'Edit'
+    expect(current_path).to eq "/bookmarks/#{bookmark.id}/edit"
 
     fill_in('url', with: 'https://www.testbookmarkupdate.com')
     fill_in('title', with: 'Test Bookmark Update')

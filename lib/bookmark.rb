@@ -64,4 +64,21 @@ class Bookmark
       url: result[0]['url']
     )
   end
+
+  def self.find(id:)
+    if ENV['RACK_ENV'] == 'test'
+      connection = PG.connect(
+        dbname: 'bookmark_manager_test'
+      )
+    else
+      connection = PG.connect(dbname: 'bookmark_manager')
+    end
+
+    result = connection.exec("SELECT * FROM bookmarks WHERE id = #{id}")
+    Bookmark.new(
+      id: result[0]['id'],
+      title: result[0]['title'],
+      url: result[0]['url']
+    )
+  end
 end

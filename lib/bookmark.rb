@@ -1,7 +1,7 @@
 require 'pg'
 
 class Bookmark
-  
+
   attr_reader :id, :title, :url
 
   def initialize(id:, title:, url:)
@@ -43,7 +43,7 @@ class Bookmark
     connection.exec("DELETE FROM bookmarks WHERE id = #{id}")
   end
 
-  def self.update(url:, title:, id:)
+  def self.update(id:, title:, url:)
     if ENV['RACK_ENV'] == 'test'
       connection = PG.connect(dbname: 'bookmark_manager_test')
     else

@@ -2,7 +2,8 @@
 
 require 'sinatra/base'
 require 'shotgun'
-require_relative './lib/bookmark'
+require './lib/bookmark'
+require './database_connection_setup'
 
 class Bookmark_Manager < Sinatra::Base
   enable :sessions, :method_override
